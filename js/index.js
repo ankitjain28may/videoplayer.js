@@ -1,29 +1,34 @@
-// Modal
+// verticalScroller.js
+// Made By - Ankit Jain
+// Date - 11/09/2016
 
 var htmlContent = "<div id=\"modal-videoplayer\" class=\"modal\"><div  class=\"close\" onclick=\"stop()\">&times;</div><video  tabindex=\"1\" onblur=\"stop()\" class=\"modal-content\" id=\"videoplayer\" controls><source  src=\"\" type=\"\"><source src=\"\" type=\"\">Your browser does not support the video tag.</video></div>";
 
-var modalElement="";
+var videoPlayer="";
 var options="";
 
-// Play video on click
-$(document).ready(function() {
-  $(".videoplayer").click(function() {
+// jQuery Function videoplayer
+(function( $ ){
+  $.fn.videoplayer = function(options) {
+    options = JSON.parse(options);
+    this.src = options.src;
+    this.type = options.type;
+    this.videoElement = $(this.selector);
     $(htmlContent).appendTo("body");
-    modalElement = document.getElementById('videoplayer');
-
-    options = JSON.parse(this.name);
+    videoPlayer = document.getElementById("videoplayer");
     $("#videoplayer source").attr({
-      "src": options['src'],
-      "type": options['type']
+      "src": this.src,
+      "type": this.type
     });
     $("#modal-videoplayer").show();
-    modalElement.load();
-    modalElement.play();
-  });
-});
+    videoPlayer.load();
+    videoPlayer.play();
+  };
+})( jQuery );
+
 
 function stop() {
-  modalElement.pause();
+  videoPlayer.pause();
   $("#videoplayer source").attr({
       "src": "",
       "type":""
@@ -38,13 +43,8 @@ $("#videoplayer").blur(function() {
   console.log(10);
   stop();
 });
-$(document).keyup(function(e) {
+
+$(window).on("keyup resize",function(e) {
   if(e.keyCode == 27)
     stop();
-});
-$(window).on("ready resize",function() {
-  var InnerWidth = $(document).innerWidth();
-  InnerWidth-=20;
-  InnerWidth+="px";
-$("#videoplayer").css({'width':InnerWidth});
 });

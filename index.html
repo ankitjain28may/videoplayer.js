@@ -30,10 +30,10 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-3 col-sm-offset-3">
-        <button class="btn btn-lg videoplayer" name='{"src":"http://d6.wload.vc/files/sfd414/206550/Tere%20Sang%20Yaara%20(Rustom)%20Full%20HD(wapking.fm).mp4", "type":"video/mp4"}'>Watch Now</button>
+        <button class="btn btn-lg" id="id-1">Watch Now</button>
       </div>
       <div class="col-sm-3 col-sm-offset-2">
-        <button class="btn btn-lg videoplayer" name='{"src":"http://www.w3schools.com/html/mov_bbb.mp4", "type":"video/mp4"}'>Watch Now</button>
+        <button class="btn btn-lg videoplayer">Watch Now</button>
       </div>
     </div>
   </div>
@@ -67,6 +67,15 @@
 </body>
 
         <script src="js/index.js"></script>
+        <script type="text/javascript">
+        $("#id-1").click(function () {
+          $("#id-1").videoplayer('{"src":"http://d6.wload.vc/files/sfd414/206550/Tere%20Sang%20Yaara%20(Rustom)%20Full%20HD(wapking.fm).mp4", "type":"video/mp4"}');
+        });
+        $(".videoplayer").click(function() {
+          $(".videoplayer").videoplayer('{"src":"play.mp4", "type":"video/mp4"}');
+        });
+
+        </script>
 
 
 
