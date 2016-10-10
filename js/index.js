@@ -1,6 +1,6 @@
-// verticalScroller.js
+// videoplayer.js
 // Made By - Ankit Jain
-// Date - 11/09/2016
+// Date - 10/10/2016
 
 var htmlContent = "<div id=\"modal-videoplayer\" class=\"modal\"><div  class=\"close\" onclick=\"stop()\">&times;</div><video  tabindex=\"1\" onblur=\"stop()\" class=\"modal-content\" id=\"videoplayer\" controls><source  src=\"\" type=\"\"><source src=\"\" type=\"\">Your browser does not support the video tag.</video></div>";
 
@@ -40,7 +40,6 @@ function stop() {
 }
 
 $("#videoplayer").blur(function() {
-  console.log(10);
   stop();
 });
 
@@ -48,3 +47,10 @@ $(window).on("keyup resize",function(e) {
   if(e.keyCode == 27)
     stop();
 });
+
+//Using HTML
+$(".videoplayer").click(function() {
+  options = $(this).data("video");
+  options = JSON.stringify(options);
+  $(this).videoplayer(options);
+})
