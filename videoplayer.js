@@ -26,7 +26,7 @@ var options="";
   };
 })( jQuery );
 
-
+// Stop function
 function stop() {
   videoPlayer.pause();
   $("#videoplayer source").attr({
@@ -39,10 +39,12 @@ function stop() {
   });
 }
 
+// On blur, Stop the video
 $("#videoplayer").blur(function() {
   stop();
 });
 
+// On pressing ESC, stop the video
 $(window).on("keyup resize",function(e) {
   if(e.keyCode == 27)
     stop();
@@ -54,3 +56,11 @@ $(".videoplayer").click(function() {
   options = JSON.stringify(options);
   $(this).videoplayer(options);
 })
+
+
+// Vanilla Js Scroller function
+
+function Videoplayer(options) {
+    var element = JSON.parse(options)["element"];
+    $(element).videoplayer(options);
+}
